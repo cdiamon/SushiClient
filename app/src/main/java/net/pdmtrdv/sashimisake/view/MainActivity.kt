@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(),
         WaitFragment.OnWaitFragmentListener,
         AdminFragment.OnAdminFragmentListener {
 
-    val TAG = "MainActivity"
+    private val TAG = "MainActivity"
     private var menuInsideCategory = false
 
     override fun onCreate(savedInstanceState: Bundle?) {

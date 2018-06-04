@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/orangeText"
         android:gravity="center"
-        android:text="Заказ готов"
+        android:text="@string/orderReady"
         android:textColor="@android:color/white"
         android:textSize="32sp"
         android:visibility="gone"

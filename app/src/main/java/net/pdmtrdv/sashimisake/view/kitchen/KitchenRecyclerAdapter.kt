@@ -9,7 +9,6 @@ import android.widget.TextView
 import net.pdmtrdv.sashimisake.R
 import net.pdmtrdv.sashimisake.model.Model
 import java.text.SimpleDateFormat
-import java.time.Instant
 import java.util.*
 
 class KitchenRecyclerAdapter(private var kitchenOrderList: List<Model.OrdersResponse>,
@@ -58,9 +57,9 @@ class KitchenRecyclerAdapter(private var kitchenOrderList: List<Model.OrdersResp
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val itemKitchenLayout = itemView.findViewById<ConstraintLayout>(R.id.itemKitchenLayout)
-        val startTime = itemView.findViewById<TextView>(R.id.startTime)
-        val detailsText = itemView.findViewById<TextView>(R.id.detailsText)
+        val itemKitchenLayout: ConstraintLayout = itemView.findViewById(R.id.itemKitchenLayout)
+        val startTime: TextView = itemView.findViewById(R.id.startTime)
+        val detailsText: TextView = itemView.findViewById(R.id.detailsText)
     }
 
     interface OnKitchenClickCallback {

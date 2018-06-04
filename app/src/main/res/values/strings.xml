@@ -8,5 +8,19 @@
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menuMenu">Меню</string>
+    <string name="menuKitchen">Кухня</string>
+    <string name="menuStatus">Статус заказов</string>
+    <string name="menuControl">Управление</string>
+    <string name="menuCommunicate">Communicate</string>
+    <string name="menuShare">Share</string>
+    <string name="menuSend">Send</string>
+    <string name="orderReady">Заказ готов</string>
+    <string name="ordersReady">Готовые заказы</string>
+    <string name="ordersInWork">Заказы в работе</string>
+    <string name="addCategory">Добавить категорию</string>
+    <string name="addDish">Добавить блюдо</string>
+    <string name="stats">Статистика</string>
+    <string name="time">time</string>
+    <string name="details">details</string>
 </resources>

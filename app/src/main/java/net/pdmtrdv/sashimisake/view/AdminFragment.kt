@@ -31,8 +31,8 @@ import java.nio.ByteBuffer
 class AdminFragment : BaseFragment() {
 
     private var listener: OnAdminFragmentListener? = null
-    val IMAGE_FOR_CATEGORY = 43
-    val IMAGE_FOR_DISH = 44
+    private val IMAGE_FOR_CATEGORY = 43
+    private val IMAGE_FOR_DISH = 44
 
     companion object {
         fun newInstance(): AdminFragment {

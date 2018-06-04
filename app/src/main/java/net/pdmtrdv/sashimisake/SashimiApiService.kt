@@ -34,6 +34,7 @@ interface SashimiApiService {
         }
     }
 
+
     /***************
      ***************        IMAGES        ***************/
 
@@ -43,12 +44,6 @@ interface SashimiApiService {
     fun uploadImage(@Part imageMultipart: MultipartBody.Part):
             Observable<ImageUploadResponse>
 
-//    @Multipart
-//    @Headers("x-auth-password:123456")
-//    @POST("images/upload")
-////    fun uploadImage(@Part("file\"; filename=\"pp.png\" ") imageMultipart: MultipartBody.Part):
-//    fun uploadImage(@Part("file\"; filename=\"pp.png\" ") imageMultipart: MultipartBody.Part):
-//            Observable<ImageUploadResponse>
 
     /***************
      ***************        MENU        ***************/
@@ -85,6 +80,7 @@ interface SashimiApiService {
                            @Body categoryUpdateRequest: CategoryUpdateRequest):
             Observable<MenuCategoryResponse>
 
+
     /***************
      ***************        ORDERS        ***************/
 
@@ -104,6 +100,7 @@ interface SashimiApiService {
     @Headers("x-auth-password:123456")
     fun changeOrderStatus(@Path("id") id: Int):
             Observable<Model.OrdersResponse>
+
 
     /***************
      ***************        REPORTS        ***************/

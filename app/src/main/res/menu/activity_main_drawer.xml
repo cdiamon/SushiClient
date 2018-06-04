@@ -7,35 +7,35 @@
         <item
             android:id="@+id/nav_menu"
             android:icon="@drawable/ic_grid_menu_black"
-            android:title="Меню" />
+            android:title="@string/menuMenu" />
         <item
             android:id="@+id/nav_kitchen"
             android:enabled="true"
             android:icon="@drawable/ic_cooking_dining"
-            android:title="Кухня" />
+            android:title="@string/menuKitchen" />
         <item
             android:id="@+id/nav_wait_screen"
             android:enabled="true"
             android:icon="@drawable/ic_queue_waiting"
-            android:title="Статус заказов" />
+            android:title="@string/menuStatus" />
         <item
             android:id="@+id/nav_administrator"
             android:icon="@drawable/ic_verified_admin"
-            android:title="Управление" />
+            android:title="@string/menuControl" />
     </group>
 
     <item
-        android:title="Communicate"
+        android:title="@string/menuCommunicate"
         android:visible="false">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="@string/menuShare" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="@string/menuSend" />
         </menu>
     </item>
 
