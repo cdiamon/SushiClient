@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".view.AdminFragment">
+
+    <Button
+        android:id="@+id/addCategoryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/thin_border_button"
+        android:fontFamily="sans-serif"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:text="Добавить категорию"
+        android:textColor="@color/orangeText"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/addDishButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/thin_border_button"
+        android:fontFamily="sans-serif"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:text="Добавить блюдо"
+        android:textColor="@color/orangeText"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addCategoryButton" />
+
+    <Button
+        android:id="@+id/getStatisticsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/thin_border_button"
+        android:fontFamily="sans-serif"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:text="Статистика"
+        android:textColor="@color/orangeText"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addDishButton" />
+
+
+</android.support.constraint.ConstraintLayout>

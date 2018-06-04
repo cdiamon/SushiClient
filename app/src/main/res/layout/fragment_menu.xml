@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".view.menu.MenuFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/menuRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <FrameLayout
+        android:id="@+id/fabFrame"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:visibility="gone">
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/fabText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:elevation="16dp"
+            android:textColor="@color/orangeText"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+    <!--android:layout_width="80dp"-->
+    <!--android:layout_height="80dp"-->
+    <!--android:layout_gravity="bottom|end"-->
+    <!--android:layout_margin="@dimen/fab_margin"-->
+    <!--android:adjustViewBounds="true"-->
+    <!--android:scaleType="center"-->
+    <!--android:src="@drawable/ic_check_call"-->
+    <!--android:visibility="visible"-->
+    <!--app:fabSize="normal" />-->
+
+
+    <!--<TextView-->
+    <!--android:layout_width="80dp"-->
+    <!--android:layout_height="80dp"-->
+    <!--android:layout_gravity="bottom|end"-->
+    <!--android:layout_margin="0dp"-->
+    <!--android:elevation="16dp"-->
+    <!--android:text="123"-->
+    <!--android:textColor="@color/orangeText"-->
+    <!--android:textSize="24sp" />-->
+
+</FrameLayout>

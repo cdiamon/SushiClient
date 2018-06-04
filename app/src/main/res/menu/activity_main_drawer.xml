@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_menu"
+            android:icon="@drawable/ic_grid_menu_black"
+            android:title="Меню" />
+        <item
+            android:id="@+id/nav_kitchen"
+            android:enabled="true"
+            android:icon="@drawable/ic_cooking_dining"
+            android:title="Кухня" />
+        <item
+            android:id="@+id/nav_wait_screen"
+            android:enabled="true"
+            android:icon="@drawable/ic_queue_waiting"
+            android:title="Статус заказов" />
+        <item
+            android:id="@+id/nav_administrator"
+            android:icon="@drawable/ic_verified_admin"
+            android:title="Управление" />
+    </group>
+
+    <item
+        android:title="Communicate"
+        android:visible="false">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>
