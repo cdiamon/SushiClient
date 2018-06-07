@@ -12,7 +12,10 @@ import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -20,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_admin.*
 import net.pdmtrdv.sashimisake.R
 import net.pdmtrdv.sashimisake.model.MenuAddCategoryRequest
 import net.pdmtrdv.sashimisake.model.MenuAddDishRequest
+import net.pdmtrdv.sashimisake.model.Model
 import net.pdmtrdv.sashimisake.model.ReportResponse
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -61,28 +65,70 @@ class AdminFragment : BaseFragment() {
 
     private fun addCategory(id: Int, name: String) {
 
-        compositeDisposable.add(sashimiApiService.addMenuCategory(MenuAddCategoryRequest(MenuAddCategoryRequest.Image(id), name))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    Toast.makeText(context, "Успешно", Toast.LENGTH_SHORT).show()
-                }, {
-                    Toast.makeText(context, "Ошибка", Toast.LENGTH_SHORT).show()
-                }))
+        val alertDialog = AlertDialog.Builder(requireContext())
+        alertDialog.setTitle("Заполните название категории")
 
+        val layout = LinearLayout(context)
+        layout.orientation = LinearLayout.VERTICAL
+
+        val nameInput = EditText(context)
+        nameInput.hint = "Название"
+        layout.addView(nameInput)
+        alertDialog.setPositiveButton("ОК", { dialog, which ->
+            dialog.dismiss()
+            compositeDisposable.add(sashimiApiService.addMenuCategory(MenuAddCategoryRequest(MenuAddCategoryRequest.Image(id), nameInput.text.toString()))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({
+                        Toast.makeText(context, "Успешно", Toast.LENGTH_SHORT).show()
+                    }, {
+                        Toast.makeText(context, "Ошибка", Toast.LENGTH_SHORT).show()
+                    }))
+        })
+
+        alertDialog.setView(layout)
+        alertDialog.show()
     }
 
     private fun addDish(categoryId: Int, id: Int, name: String) {
 
-        compositeDisposable.add(sashimiApiService.addDishToCategory(categoryId, MenuAddDishRequest(
-                MenuAddDishRequest.Image(id), name, "тестовые ингредиенты", 135, "тестовый вес"))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    Toast.makeText(context, "Успешно", Toast.LENGTH_SHORT).show()
-                }, {
-                    Toast.makeText(context, "Ошибка", Toast.LENGTH_SHORT).show()
-                }))
+
+        val alertDialog = AlertDialog.Builder(requireContext())
+        alertDialog.setTitle("Заполните параметры блюда")
+
+        val layout = LinearLayout(context)
+        layout.orientation = LinearLayout.VERTICAL
+
+        val nameInput = EditText(context)
+        nameInput.hint = "Название"
+        layout.addView(nameInput)
+
+        val ingredientsInput = EditText(context)
+        ingredientsInput.hint = "Ингредиенты"
+        layout.addView(ingredientsInput)
+
+        val priceInput = EditText(context)
+        priceInput.inputType = EditorInfo.TYPE_CLASS_PHONE
+        priceInput.hint = "Цена"
+        layout.addView(priceInput)
+
+//        val arrayAdapter = ArrayAdapter<Model.DoubleDishModel>(context, android.R.layout.simple_list_item_1, menuIdList)
+        alertDialog.setPositiveButton("ОК", { dialog, which ->
+            dialog.dismiss()
+            compositeDisposable.add(sashimiApiService.addDishToCategory(categoryId, MenuAddDishRequest(
+                    MenuAddDishRequest.Image(id), nameInput.text.toString(), ingredientsInput.text.toString(), priceInput.text.toString().toInt(), "тестовый вес"))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({
+                        Toast.makeText(context, "Успешно", Toast.LENGTH_SHORT).show()
+                    }, {
+                        Toast.makeText(context, "Ошибка", Toast.LENGTH_SHORT).show()
+                    }))
+        })
+
+        alertDialog.setView(layout)
+        alertDialog.show()
+
 
     }
 
@@ -91,7 +137,7 @@ class AdminFragment : BaseFragment() {
 
         var filePart: MultipartBody.Part? = null
 
-        if (requestCode == IMAGE_FOR_CATEGORY || requestCode == IMAGE_FOR_DISH && resultCode == Activity.RESULT_OK) {
+        if ((requestCode == IMAGE_FOR_CATEGORY || requestCode == IMAGE_FOR_DISH) && resultCode == Activity.RESULT_OK) {
             val selectedImage = data!!.data
             var bitmap: Bitmap? = null
             try {
@@ -124,22 +170,22 @@ class AdminFragment : BaseFragment() {
                                         .subscribeOn(Schedulers.io())
                                         .observeOn(AndroidSchedulers.mainThread())
                                         .subscribe({
-                                            val menuIdList = ArrayList<Int>()
+                                            val menuIdList = ArrayList<Model.DoubleDishModel>()
                                             it.forEach {
-                                                menuIdList.add(it.id)
+                                                menuIdList.add(Model.DoubleDishModel(it.id, it.name))
                                             }
 
                                             val builderSingle1 = AlertDialog.Builder(requireContext())
                                             builderSingle1.setTitle("Выберите id категории меню")
 
-                                            val arrayAdapter = ArrayAdapter<Int>(context, android.R.layout.simple_list_item_1, menuIdList)
+                                            val arrayAdapter = ArrayAdapter<Model.DoubleDishModel>(context, android.R.layout.simple_list_item_1, menuIdList)
                                             builderSingle1.setNegativeButton("закрыть", { dialog, which ->
                                                 dialog.dismiss()
                                             })
 
                                             builderSingle1.setAdapter(arrayAdapter, { dialog, which ->
                                                 dialog.dismiss()
-                                                addDish(arrayAdapter.getItem(which), catId, catName)
+                                                addDish(arrayAdapter.getItem(which).id, catId, catName)
                                             })
                                             builderSingle1.show()
                                         }, {

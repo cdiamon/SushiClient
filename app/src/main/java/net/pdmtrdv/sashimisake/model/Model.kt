@@ -10,4 +10,10 @@ object Model {
                               val status: String, //COOKING, READY, DONE
                               val sum: Int)
 
+    data class DoubleDishModel(val id: Int,
+                               val name: String) {
+        override fun toString(): String {
+            return "название: $name"
+        }
+    }
 }
